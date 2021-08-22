@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CarDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Car">
+    <Key>
+      <PropertyRef Name="CarId" />
+    </Key>
+    <Property Name="CarId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Customer_Name" Type="varchar" MaxLength="22" Nullable="false" />
+    <Property Name="Customer_email" Type="varchar" MaxLength="58" Nullable="false" />
+    <Property Name="Country" Type="varchar" MaxLength="48" Nullable="false" />
+    <Property Name="Gender" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="Age" Type="int" Nullable="false" />
+    <Property Name="Annual_Salary" Type="int" Nullable="false" />
+    <Property Name="Credit_Card_Debt" Type="int" Nullable="false" />
+    <Property Name="Net_Worth" Type="int" Nullable="false" />
+    <Property Name="Car_Purchase_Amount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="CarDatabaseModelStoreContainer">
+    <EntitySet Name="Car" EntityType="Self.Car" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
