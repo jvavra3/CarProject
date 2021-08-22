@@ -1,0 +1,23 @@
+﻿Migration commands
+
+//executed once
+// creation of Configuration.cs
+
+Enable-Migrations -ContextTypeName CarEmployeeContext -MigrationsDirectory DatabaseCodeFirst/Migrations/CarEmployeeDatabase
+Enable-Migrations -ContextTypeName DatabaseCodeFirstLog/FilterContext -MigrationsDirectory DatabaseCodeFirstLog/Migrations/LogDatabase
+
+
+
+//executed when model changes
+Add-Migration -ConfigurationTypeName CarProject.DatabaseCodeFirstLog.Migrations.LogDatabase.Configuration "LogMigration"
+
+
+
+
+
+//executed when anytime
+update-database -ConfigurationTypeName CarProject.DatabaseCodeFirst.Migrations.CarEmployeeDatabase.Configuration
+update-database -ConfigurationTypeName CarProject.DatabaseCodeFirstLog.Migrations.LogDatabase.Configuration
+
+
+MVC Version=5.2.7.0

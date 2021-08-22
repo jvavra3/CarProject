@@ -1,0 +1,90 @@
+﻿@model CarProject.DatabaseFirst.Car
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Car</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer_email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Annual_Salary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Annual_Salary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Credit_Card_Debt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Credit_Card_Debt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Net_Worth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Net_Worth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Car_Purchase_Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Car_Purchase_Amount)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CarId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

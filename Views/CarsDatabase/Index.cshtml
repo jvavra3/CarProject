@@ -1,0 +1,193 @@
+﻿@model IEnumerable<CarProject.DatabaseFirst.Car>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<!--Searching, filters-->
+
+@using (Html.BeginForm("Index", "CarsDatabase", FormMethod.Post))
+{
+<div class="form-group">
+    <table class="table">
+        <tr>
+            <td>
+                <p>
+                    <h4>Search by Name</h4>
+                </p>
+                @Html.TextBox("Name")
+            </td>
+            <td>
+                <p>
+                    <h4>Search by Email</h4>
+                </p>
+                @Html.TextBox("Email")
+            </td>
+            <td>
+
+                <p>
+                    <h4>Search by Country</h4>
+                </p>
+                @Html.TextBox("Country")
+
+            </td>
+            <td>
+                <p>
+                    <h4> Search by Gender</h4>
+                </p>
+                @Html.TextBox("Gender")     
+            </td>
+            <td>
+                <p>
+                    <h4>Search by Age</h4>
+                </p>
+                @Html.TextBox("Age")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>
+                    <h4>Search by Salary</h4>
+                </p>
+                @Html.TextBox("Salary")
+
+
+
+            </td>
+            <td>
+                <p>
+                    <h4>Search by Debt</h4>
+                </p>
+                @Html.TextBox("Debt")
+
+
+            </td>
+            <td>
+                <p>
+                    <h4>Search by Net Worth</h4>
+                </p>
+                @Html.TextBox("netWorth")
+
+            </td>
+            <td>
+                <p>
+                    <h4>Search by Net Car Purchase Amount</h4>
+                </p>
+                @Html.TextBox("Purchase")
+
+            </td>
+
+        </tr>
+
+    </table>
+    <input id="Submit1" type="submit" value="search" class="form-control" />
+    
+</div>
+}
+
+
+
+
+    <!--Column names, sorting-->
+    <table class="table table-striped">
+        <tr>
+            <th>
+               
+               
+
+                @Html.ActionLink("Customer Name", "Index", new { Sort = ViewBag.nameSort },
+                new { @class = "btn btn-primary" })
+            </th>
+            <th>
+                @Html.ActionLink("Customer Email", "Index", new { Sort = ViewBag.emailSort },
+                new { @class = "btn btn-primary" })
+
+            </th>
+            <th>
+
+                @Html.ActionLink("Country", "Index", new { Sort = ViewBag.countrySort },
+                new { @class = "btn btn-primary" })
+            </th>
+            <th>
+                @Html.ActionLink("Gender", "Index", new { Sort = ViewBag.genderSort },
+                new { @class = "btn btn-primary" })
+
+            </th>
+            <th>
+                @Html.ActionLink("Age", "Index", new { Sort = ViewBag.ageSort },
+                new { @class = "btn btn-primary" })
+
+            </th>
+            <th>
+                @Html.ActionLink("Annual Salary", "Index", new { Sort = ViewBag.salarySort },
+                new { @class = "btn btn-primary" })
+
+            </th>
+            <th>
+                @Html.ActionLink("Credit Card Debt", "Index", new { Sort = ViewBag.debtSort },
+                new { @class = "btn btn-primary" })
+
+            </th>
+            <th>
+                @Html.ActionLink("Net Worth", "Index", new { Sort = ViewBag.worthSort },
+                new { @class = "btn btn-primary" })
+
+            </th>
+            <th>
+                @Html.ActionLink("Car Purchase Amount", "Index", new { Sort = ViewBag.carPurchaseSort },
+                new { @class = "btn btn-primary" })
+
+            </th>
+
+           
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer_email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Annual_Salary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Credit_Card_Debt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Net_Worth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Car_Purchase_Amount)
+                </td>
+                <td>
+                    @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { id = item.CarId })
+                        <span> | </span>
+                        @Html.ActionLink("Delete", "Delete", new { id = item.CarId })
+                    }
+                    @Html.ActionLink("Details", "Details", new { id = item.CarId })
+                </td>
+            </tr>
+        }
+
+    </table>
