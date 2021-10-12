@@ -25,6 +25,10 @@ namespace CarProject
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrapFlatly.css",
                       "~/Content/site.css"));
+
+
+            bundles.Add(new StyleBundle("~/bundles/Chart.js").Include(
+                     "~/Scripts/Chart.min.js"));
         }
     }
 }

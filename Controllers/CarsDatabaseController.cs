@@ -14,6 +14,7 @@ using CarProject.Repository;
 //Template controler (Entity Framework)
 namespace CarProject.Controllers
 {
+    [Authorize(Roles = "Admin, User")]
     public class CarsDatabaseController : Controller
     {
         //private CarDatabaseEntities db = new CarDatabaseEntities();

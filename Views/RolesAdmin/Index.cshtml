@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Roles Admin</h2>
+@Html.ActionLink("Create new role", "Create", "RolesAdmin", new { @class = "btn btn-primary" })
+
+
+
+
+
+<h2>List Of Roles</h2>
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div>
+        <h2>
+            @ViewBag.ErrorMessage
+        </h2>
+
+    </div>
+}
+
+<table class="table table-striped">
+   
+
+        @foreach (var role in Model)
+        {
+            <p>
+                <strong>@role.Name | </strong>
+                <span onclick="return confirm('Are you sure to delete?')"><a href="/RolesAdmin/DeleteRoles?roleName=@role.Name" class="delLink" style="color:red;">Delete</a></span> |
+                @Html.ActionLink("Edit", "EditRole", new { roleName = @role.Name })
+            </p>
+        }
+    
+</table>
+
+
+
+
+
+
+
+
+
+<div class="panel panel-info">
+    <div class="panel panel-heading">
+
+        Search user
+    </div>
+    <div class="panel panel-body">
+        <div class="row">
+            <div class="col-md-6">
+
+                @using (Html.BeginForm("ManageUserRoles", "RolesAdmin"))
+                {
+                    <div class="form-group">
+                        @Html.TextBox("UserName")
+
+
+                    </div>
+                    <div class="form-group">
+                        <input class="btn btn-primary" type="submit" value="Search" />
+
+
+                    </div>
+
+
+                }
+
+
+            </div>
+            <div class="col-md-6">
+                @Html.ActionLink("or list all users", "ListOfUsers", "RolesAdmin", null, new { @class = "btn btn-primary" })
+
+
+            </div>
+
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+</div>

@@ -13,6 +13,7 @@ using CarProject.Repository;
 
 namespace CarProject.Controllers.EmployeeControllers
 {
+    [Authorize(Roles = "Admin, Employee")]
     public class EmployeeController : Controller
     {
         //private CarEmployeeContext db = new CarEmployeeContext();
@@ -33,7 +34,7 @@ namespace CarProject.Controllers.EmployeeControllers
         // GET: Employee
         public ActionResult Index()
              {
-            ViewData["ControllerName"] = this.ToString();
+           
             return View("Index", _repository.GetAllEmployee());
             
             //return View(db.EmployeeModels.ToList());

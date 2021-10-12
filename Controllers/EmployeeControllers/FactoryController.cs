@@ -13,6 +13,7 @@ using CarProject.Repository;
 
 namespace CarProject.Controllers.EmployeeControllers
 {
+    [Authorize(Roles = "Admin")]
     public class FactoryController : Controller
     {
         //private CarEmployeeContext db = new CarEmployeeContext();

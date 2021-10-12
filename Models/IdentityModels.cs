@@ -30,4 +30,5 @@ namespace CarProject.Models
             return new ApplicationDbContext();
         }
     }
+
 }

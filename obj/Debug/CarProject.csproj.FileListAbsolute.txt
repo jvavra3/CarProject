@@ -155,3 +155,4 @@ C:\Users\Jan\source\repos\CarProject\bin\System.Threading.Channels.xml
 C:\Users\Jan\source\repos\CarProject\bin\System.Threading.Tasks.Extensions.xml
 C:\Users\Jan\source\repos\CarProject\bin\nunit.framework.dll
 C:\Users\Jan\source\repos\CarProject\bin\nunit.framework.xml
+C:\Users\Jan\source\repos\CarProject\bin\Highcharts.dll

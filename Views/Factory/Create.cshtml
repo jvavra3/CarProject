@@ -53,7 +53,7 @@
             @Html.LabelFor(model => model.TypeOfCar, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <!--Collection list for types of car-->
-                @Html.DropDownListFor(model => model.Country, new SelectList(Collections.CarTypes()), new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.TypeOfCar, new SelectList(Collections.CarTypes()), new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.TypeOfCar, "", new { @class = "text-danger" })
             </div>
         </div>

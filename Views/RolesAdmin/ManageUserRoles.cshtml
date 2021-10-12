@@ -1,0 +1,59 @@
+﻿@model CarProject.Models.UserRoleViewModel
+@{
+    ViewBag.Title = "ManageUserRoles";
+}
+
+<h2>ManageUserRoles</h2>
+
+@Html.ActionLink("List Roles", "Index")
+
+@if (Model != null)
+{
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>@Model.userName</h3>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            @using (Html.BeginForm("UpdateRoles", "RolesAdmin", FormMethod.Post, new { @class = "form" }))
+            {
+                @Html.HiddenFor(m => m.userID)
+                @Html.HiddenFor(m => m.userName)
+
+                for (int i = 0; i < Model.UserRoles.Count; i++)
+                {
+                    <div class="checkbox" style="padding-left:25px">
+                        @Html.CheckBoxFor(m => m.UserRoles[i].isChecked, new { id = "userRoles_" + i })
+
+
+                        @Html.HiddenFor(m => m.UserRoles[i].Id)
+                        @Html.HiddenFor(m => m.UserRoles[i].Name)
+
+                        @Html.DisplayFor(m => m.UserRoles[i].Name)
+
+
+
+                    </div>
+                }
+
+                <input type="submit" value="Update Role" class="btn btn-primary" />
+
+
+            }
+
+
+
+        </div>
+
+
+
+
+
+    </div>
+}

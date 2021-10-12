@@ -79,14 +79,6 @@ namespace CarProject.Repository
             }
 
 
-
-
-
-         
-
-
-            
-
             //return db.Car.ToList();
             return carData.ToList();
 

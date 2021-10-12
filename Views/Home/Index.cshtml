@@ -2,6 +2,15 @@
     ViewBag.Title = "Home Page";
 }
 
+<style>
+    #chartContainer {
+        width: 400px;
+        height: 400px;
+        border: 1px solid #ddd;
+        padding: 1px;
+        border-radius: 4px;
+    }
+</style>
 
 <div class="row">
     <div class="col-md-12">
@@ -11,26 +20,400 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <h2>Distribution of customers according to genders</h2>
+            <div id="chartContainer">
+                <canvas id="pieChart"></canvas>
 
+            </div>
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+            @Scripts.Render("~/Scripts/Chart.min.js")
+        <script>
+            var colorA = "rgba(242,166,54,.5)";
+            var colorB = "rgba(145,65,72,.5)";
+            var colorC = "rgba(74,25,92,.5)";
+
+            var borderColorA = "rgba(242,166,54)";
+            var borderColorB = "rgba(145,65,72)";
+            var borderColorC = "rgba(74,25,92)";
+
+            var _numerOfGendersArray = @Html.Raw(Json.Encode(ViewBag.numberOfGenders));
+            var _genders = @Html.Raw(Json.Encode(ViewBag.gender));
+
+            var _uniqueAgeArray = @Html.Raw(Json.Encode(ViewBag.uniqueAge));
+            var _ages = @Html.Raw(Json.Encode(ViewBag.age));
+
+            var _debtMale = @Html.Raw(Json.Encode(ViewBag.debtMale));
+            var _debtFemale = @Html.Raw(Json.Encode(ViewBag.debtFemale));
+
+            var _annualSalaryMale = @Html.Raw(Json.Encode(ViewBag.annualSalaryMale));
+            var _annualSalaryFemale = @Html.Raw(Json.Encode(ViewBag.annualSalaryFemale));
+
+            var _purchaseMale = @Html.Raw(Json.Encode(ViewBag.purchaseMale));
+            var _purchaseFemale = @Html.Raw(Json.Encode(ViewBag.purchaseFemale));
+
+            var _ageFull = @Html.Raw(Json.Encode(ViewBag.ageFull));
+            var _annualSalary = @Html.Raw(Json.Encode(ViewBag.annualSalary));
+            var _purchase = @Html.Raw(Json.Encode(ViewBag.purchase));
             
+
+
+            var _salaryDebtMale = [];
+            var _salaryPurchaseMale = [];
+            for (let i = 0; i < 195; i++) {
+
+
+                let obj = { x: _purchaseMale[i], y: _annualSalaryMale[i] };
+                let obj2 = { x: _debtMale[i], y: _annualSalaryMale[i] };
+                _salaryPurchaseMale.push(obj);
+                _salaryDebtMale.push(obj2);
+            }
+
+            var _salaryDebtFemale = [];
+            var _salaryPurchaseFemale = [];
+            for (let i = 0; i < 204; i++) {
+
+                
+                let obj = { x: _purchaseFemale[i], y: _annualSalaryFemale[i] };
+                let obj2 = { x: _debtFemale[i], y: _annualSalaryFemale[i] };
+                _salaryPurchaseFemale.push(obj);
+                _salaryDebtFemale.push(obj2);
+            }
+
+            var _ageSalary = [];
+            var _agePurchase = [];
+            for (let i = 0; i < 399; i++) {
+
+
+                let obj = { x: _ageFull[i], y: _annualSalary[i] };
+                let obj2 = { x: _ageFull[i], y: _purchase[i] };
+                _ageSalary.push(obj);
+                _agePurchase.push(obj2);
+            }
+
+            //var count = Object.keys(_purchase).length;
+            //alert(count);
+      
+            var ctx = document.getElementById('pieChart').getContext('2d');
+            var pieChart = new Chart(ctx, {
+                type: "pie",
+                data: {
+                    labels: _genders,
+                    datasets: [{
+                        label: "Pie Chart  Example",
+                        data: _numerOfGendersArray,
+                        backgroundColor: [colorA, colorB],
+                        borderColor: [borderColorA, borderColorB],
+                        borderWidth:1
+
+                    }
+
+                    ]
+
+                },
+
+                options: {
+                    maintainAspectRatio: false,
+                   
+
+                },
+
+            });
+
+        </script>
+
+        </div>
+        <div class="col-md-5 col-md-offset-1">
+            <h2>Distribution of customers according to age</h2>
+            <div id="chartContainer">
+                <canvas id="barChart"></canvas>
+
+            </div>
+
+            <script>
+               
+            var ctx = document.getElementById('barChart').getContext('2d');
+            var barChart = new Chart(ctx, {
+                type: "bar",
+                data: {
+                    labels: _ages,
+                    datasets: [{
+                        label: "Bar Chart  Example",
+                        data: _uniqueAgeArray,
+                        backgroundColor: [colorA, colorB, colorC, colorA, colorB, colorC, colorA, colorB, colorC, colorA, colorB, colorC, colorA, colorB, colorC, colorA, colorB, colorC, colorA, colorB, colorC, colorA, colorB, colorC, colorA, colorB, colorC, colorA, colorB, colorC, colorA, colorB, colorC, colorA, colorB, colorC, colorA, colorB, colorC, colorA, colorB],
+
+                        borderColor: [borderColorA, borderColorB, borderColorC, borderColorA, borderColorB, borderColorC, borderColorA, borderColorB, borderColorC, borderColorA, borderColorB, borderColorC, borderColorA, borderColorB, borderColorC, borderColorA, borderColorB, borderColorC, borderColorA, borderColorB, borderColorC, borderColorA, borderColorB, borderColorC, borderColorA, borderColorB, borderColorC, borderColorA, borderColorB, borderColorC, borderColorA, borderColorB, borderColorC, borderColorA, borderColorB, borderColorC, borderColorA, borderColorB, borderColorC, borderColorA, borderColorB, borderColorC, borderColorA, borderColorB, borderColorC, borderColorA, borderColorB, borderColorC, borderColorA, borderColorB, borderColorC ],
+                        borderWidth:1
+
+                    }
+
+                    ]
+
+                },
+
+                options: {
+                    maintainAspectRatio: false,
+                    scales: {
+                        xAxes: [{
+                            ticks: { beginAtZero: true },
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Age of customers'
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Sum of customers (same age)'
+                            }
+                        }]},
+                    legend: {display:false}
+
+                },
+
+            });
+
+            </script>
+        </div>
     </div>
-</div>
+
+
+    <div class="row">
+        <div class="col-md-5">
+            <h2>Comparison of car sales and customers salary</h2>
+            <div id="chartContainer">
+                <canvas id="salaryPurchaseChart" width="100" height="100"></canvas>
+            </div>
+
+                <script>
+
+                    var ctx = document.getElementById('salaryPurchaseChart').getContext('2d');
+                    var salaryPurchaseChart = new Chart(ctx, {
+                        type: "scatter",
+                        data: {
+                            datasets: [{
+                                label: "Male customers",
+                                pointRadius: 4,
+                                backgroundColor: "rgba(242,166,54)",
+                                data: _salaryPurchaseMale
+                            },
+                            {
+
+                                label: "Female customers",
+                                pointRadius: 4,
+                                backgroundColor: "rgba(145,65,72)",
+                                data: _salaryPurchaseFemale
+                            }
+                            ]
+
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        max: 90000,
+                                        min: 0,
+                                        beginAtZero: true
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Salary ($)'
+                                    }
+                                }],
+                                xAxes: [{
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Purchase cost ($)'
+                                    }
+                                }]
+
+
+                            },
+
+                        }
+                    });
+                </script>
+            </div>
+
+        <div class="col-md-5 col-md-offset-1">
+            <h2>Comparison of salary and debt based on genders</h2>
+            <div id="chartContainer">
+                <canvas id="salaryDebtChart" width="100" height="100"></canvas>
+            </div>
+
+
+                <script>
+
+                    //alert(storage);
+
+                    var ctx = document.getElementById('salaryDebtChart').getContext('2d');
+                    var salaryDebtChart = new Chart(ctx, {
+                        type: "scatter",
+                        data: {
+                            datasets: [{
+                                label: "Male customers",
+                                pointRadius: 4,
+                                backgroundColor: "rgba(242,166,54)",
+                                data: _salaryDebtMale
+                            },
+                            {
+
+                                label: "Female customers",
+                                pointRadius: 4,
+                                backgroundColor: "rgba(145,65,72)",
+                                data: _salaryDebtFemale
+                            }
+                            ]
+
+
+
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        max: 90000,
+                                        min: 0,
+                                        beginAtZero: true
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Salary ($)'
+                                    }
+                                }],
+                                xAxes: [{
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Debt ($)'
+                                    }
+                                }]
+
+
+                            },
+
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+
+    <div class="row">
+        <div class="col-md-5">
+            <h2>Comparison of customers debt based on their age</h2>
+            <div id="chartContainer">
+                <canvas id="ageSalaryChart" width="100" height="100"></canvas>
+            </div>
+
+                <script>
+
+                    //alert(storage);
+
+                    var ctx = document.getElementById('ageSalaryChart').getContext('2d');
+                    var ageSalaryChart = new Chart(ctx, {
+                        type: "scatter",
+                        data: {
+                            datasets: [{
+                                label: "Customers",
+                                pointRadius: 4,
+                                backgroundColor: "rgba(242,166,54)",
+                                data: _ageSalary
+                            },
+                            ]
+
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        max: 90000,
+                                        min: 0,
+                                        beginAtZero: true
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Salary ($)'
+                                    }
+                                }],
+                                xAxes: [{
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Age'
+                                    }
+                                }]
+
+
+                            },
+
+                        }
+                    });
+                </script>
+            </div>
+        <div class="col-md-5 col-md-offset-1">
+            <h2>Comparison of customers purchases based on their age</h2>
+            <div id="chartContainer">
+                <canvas id="agePurchaseChart" width="100" height="100"></canvas>
+            </div>
+
+                <script>
+
+                    //alert(storage);
+
+
+                    //_ageSalary.push(obj);
+                    //_agePurchase.push(obj2);
+
+                    var ctx = document.getElementById('agePurchaseChart').getContext('2d');
+                    var agePurchaseChart = new Chart(ctx, {
+                        type: "scatter",
+                        data: {
+                            datasets: [{
+                                label: "Customers",
+                                pointRadius: 4,
+                                backgroundColor: "rgba(242,166,54)",
+                                data: _agePurchase
+                            },
+                            ]
+
+
+
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        max: 90000,
+                                        min: 0,
+                                        beginAtZero: true
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Purchase ($)'
+                                    }
+                                }],
+                                xAxes: [{
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Age'
+                                    }
+                                }]
+
+
+                            },
+
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+
+        <script src="~/Scripts/Chart.min.js"></script>
+
+    </div>
+
+
+
+
+   

@@ -12,6 +12,7 @@ using CarProject.Repository;
 
 namespace CarProject.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class LogModelsController : Controller
     {
         

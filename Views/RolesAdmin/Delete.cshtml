@@ -1,0 +1,33 @@
+﻿@model Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete role</h2>
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div>
+        <h2>
+            @ViewBag.ErrorMessage
+        </h2>
+
+    </div>
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken();
+    @Html.ValidationSummary();
+    <div>
+
+        Role name
+
+    </div>
+
+    <p>
+        @Html.TextBox("RoleName")
+
+    </p>
+    <input type="submit" value="save" />
+
+}

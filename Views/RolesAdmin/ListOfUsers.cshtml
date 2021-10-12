@@ -1,0 +1,48 @@
+﻿@model IEnumerable<CarProject.Models.ApplicationUser>
+@{
+    ViewBag.Title = "ListOfUsers";
+}
+
+<h2>List Of Users</h2>
+
+@Html.ActionLink("List Roles", "Index")
+
+<table class="table table-striped">
+
+    <tr>
+        <th>Email</th>
+
+        <th></th>
+        <th></th>
+
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.UserName</td>
+            <td>
+                <form action="@Url.Action("ManageUserRoles","RolesAdmin")" method="post" class="form-inline">
+                    <input type="hidden" name="UserName" value="@item.UserName" />
+                    <button type="submit" class="btn btn-primary">Manage roles</button>
+
+
+                </form>
+
+
+            </td>
+
+
+
+
+
+        </tr>
+
+
+    }
+
+
+
+
+
+</table>

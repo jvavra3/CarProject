@@ -1,0 +1,36 @@
+﻿@model Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Add role</h2>
+
+@Html.ActionLink("List Roles", "Index")
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div>
+        <h2>
+            @ViewBag.ErrorMessage
+        </h2>
+
+    </div>
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken();
+    @Html.ValidationSummary();
+    @Html.HiddenFor(model => model.Id)
+    <div>
+
+        Role name
+
+    </div>
+
+    <p>
+        @Html.TextBox("roleName")
+
+    </p>
+    <input type="submit" value="save" class="btn btn-primary" />
+
+}
