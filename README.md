@@ -8,7 +8,7 @@ Test implementation of c# web application via MVC technology. The project is foc
 - Javascript
 - Entity Framework
 - HTML
-- 
+
 ## Project description
 This section is dedicated to describing CarProject in detail.
 
