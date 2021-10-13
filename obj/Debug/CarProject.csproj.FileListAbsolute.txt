@@ -101,9 +101,7 @@ C:\Users\Jan\source\repos\CarProject\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Jan\source\repos\CarProject\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Jan\source\repos\CarProject\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Users\Jan\source\repos\CarProject\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Jan\source\repos\CarProject\obj\Debug\CarProject.csprojAssemblyReference.cache
 C:\Users\Jan\source\repos\CarProject\obj\Debug\CarProject.csproj.CoreCompileInputs.cache
-C:\Users\Jan\source\repos\CarProject\obj\Debug\CarProject.csproj.CopyComplete
 C:\Users\Jan\source\repos\CarProject\obj\Debug\CarProject.dll
 C:\Users\Jan\source\repos\CarProject\obj\Debug\CarProject.pdb
 C:\Users\Jan\source\repos\CarProject\bin\PagedList.dll
@@ -156,3 +154,4 @@ C:\Users\Jan\source\repos\CarProject\bin\System.Threading.Tasks.Extensions.xml
 C:\Users\Jan\source\repos\CarProject\bin\nunit.framework.dll
 C:\Users\Jan\source\repos\CarProject\bin\nunit.framework.xml
 C:\Users\Jan\source\repos\CarProject\bin\Highcharts.dll
+C:\Users\Jan\source\repos\CarProject\obj\Debug\CarProject.csproj.AssemblyReference.cache

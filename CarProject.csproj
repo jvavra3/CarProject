@@ -259,7 +259,7 @@
     <Compile Include="Controllers\EmployeeControllers\EmployeeController.cs" />
     <Compile Include="Controllers\EmployeeControllers\FactoryController.cs" />
     <Compile Include="Controllers\LogModelsController.cs" />
-    <Compile Include="Controllers\RolesAdminController2.cs" />
+    <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="DatabaseCodeFirstLog\Migrations\LogDatabase\Configuration.cs" />
     <Compile Include="DatabaseCodeFirst\Migrations\CarEmployeeDatabase\Configuration.cs" />
     <Compile Include="DatabaseCodeFirstLog\FilterContext.cs" />
