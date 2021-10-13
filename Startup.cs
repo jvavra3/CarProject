@@ -24,12 +24,12 @@ namespace CarProject
 
 
             // In Startup iam creating first Admin Role and creating a default Admin User     
-            if (!roleManager.RoleExists("Admin"))
+            if (!roleManager.RoleExists("SuperAdmin"))
             {
 
                 // first we create Admin rool    
                 var role = new IdentityRole();
-                role.Name = "Admin";
+                role.Name = "SuperAdmin";
                 roleManager.Create(role);
 
                 //Here we create a Admin super user who will maintain the website                   
@@ -45,7 +45,7 @@ namespace CarProject
                 //Add default User to Role Admin    
                 if (chkUser.Succeeded)
                 {
-                    var result1 = UserManager.AddToRole(user.Id, "Admin");
+                    UserManager.AddToRole(user.Id, "Admin");
 
                 }
             }
